@@ -16,5 +16,25 @@
         </div>
     </header>
     <div id="projects"></div>
+    <form id="todo-form">
+        <input id="todo-title" type="text" placeholder="Title" required />
+
+        <input
+            id="todo-description"
+            type="text"
+            placeholder="Description"
+            required
+        />
+
+        <input id="todo-due-date" type="date" required />
+
+        <select id="todo-priority">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+
+        <button type="submit">Add Todo</button>
+    </form>
 </body>
 </html>
