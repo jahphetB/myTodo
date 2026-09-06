@@ -1,40 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Todo</title>
-</head>
-<body>
-    <header>
-        <div class="creation_buttons">
-            <button>New todo</button>
-            <button>New project</button>
-        </div>
-        <div>
-            Organized!
-        </div>
-    </header>
-    <div id="projects"></div>
-    <form id="todo-form">
-        <input id="todo-title" type="text" placeholder="Title" required />
+  <head>
+    <meta charset="UTF-8" />
 
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>My Todo</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="creation_buttons">
+        <button>New Todo</button>
+        <button>New Project</button>
+      </div>
+
+      <div>
+        Organized!
+      </div>
+    </header>
+
+    <main>
+      <div id="projects"></div>
+
+      <form id="todo-form">
         <input
-            id="todo-description"
-            type="text"
-            placeholder="Description"
-            required
+          id="todo-title"
+          type="text"
+          placeholder="Title"
+          required
         />
 
-        <input id="todo-due-date" type="date" required />
+        <input
+          id="todo-description"
+          type="text"
+          placeholder="Description"
+          required
+        />
+
+        <input
+          id="todo-due-date"
+          type="date"
+          required
+        />
 
         <select id="todo-priority">
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
         </select>
 
         <button type="submit">Add Todo</button>
-    </form>
-</body>
+      </form>
+      <form id="project-form">
+        <input
+            id="project-name"
+            type="text"
+            placeholder="Project name"
+            required
+        />
+
+        <button type="submit">Add Project</button>
+      </form>
+    </main>
+  </body>
 </html>

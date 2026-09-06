@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.creation_buttons {
+  margin-bottom: 10px;
+}
+
+main {
+  padding: 20px;
+}
+
+#projects {
+  margin-bottom: 30px;
+}
+
+#todo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+}
+
+input,
+select,
+button {
+  padding: 8px;
+}
+
+#projects p {
+  cursor: pointer;
+}

@@ -1,19 +1,45 @@
+import "./styles.css";
+
 import Todo from "./todo.js";
-import { projects, defaultProject } from "./app.js";
+import { defaultProject, addProject } from "./app.js";
 import { renderProjects } from "./dom.js";
 
-const testTodo = new Todo(
-  "Finish Todo List",
-  "Work on The Odin Project assignment",
-  "2026-09-10",
-  "high"
-);
+const todoForm = document.querySelector("#todo-form");
 
-defaultProject.addTodo(testTodo);
+todoForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const title = document.querySelector("#todo-title").value;
+  const description = document.querySelector("#todo-description").value;
+  const dueDate = document.querySelector("#todo-due-date").value;
+  const priority = document.querySelector("#todo-priority").value;
+
+  const newTodo = new Todo(
+    title,
+    description,
+    dueDate,
+    priority
+  );
+
+  defaultProject.addTodo(newTodo);
+
+  renderProjects();
+
+  todoForm.reset();
+});
+
+const projectForm = document.querySelector("#project-form");
+
+projectForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const projectName = document.querySelector("#project-name").value;
+
+  addProject(projectName);
+
+  renderProjects();
+
+  projectForm.reset();
+});
 
 renderProjects();
-
-/*
-console.log(defaultProject);
-console.log(projects);
-console.log(testTodo); */
