@@ -25,7 +25,12 @@ function renderProjects() {
     deleteProjectButton.textContent = "Delete Project";
 
     editProjectButton.addEventListener("click", () => {
+      if (projectElement.querySelector(".project-edit-form")) {
+        return;
+      }
+
       const editForm = document.createElement("form");
+      editForm.classList.add("project-edit-form");
 
       const nameInput = document.createElement("input");
       nameInput.value = project.name;
@@ -97,7 +102,12 @@ function renderProjects() {
       editButton.textContent = "Edit";
 
       editButton.addEventListener("click", () => {
+        if (todoElement.querySelector(".todo-edit-form")) {
+          return;
+        }
+
         const editForm = document.createElement("form");
+        editForm.classList.add("todo-edit-form");
 
         const titleInput = document.createElement("input");
         titleInput.value = todo.title;

@@ -12,61 +12,72 @@
   </head>
 
   <body>
-    <header>
-      <div class="creation_buttons">
-        <button>New Todo</button>
-        <button>New Project</button>
-      </div>
-
+    <header class="app-header">
       <div>
-        Organized!
+        <h1>Organized!</h1>
+        <p>Your simple project and todo manager</p>
       </div>
     </header>
 
-    <main>
-      <div id="projects"></div>
+    <main class="app-layout">
+      <aside class="sidebar">
+        <section class="panel">
+          <h2>Create Project</h2>
 
-      <form id="todo-form">
-        <input
-          id="todo-title"
-          type="text"
-          placeholder="Title"
-          required
-        />
+          <form id="project-form">
+            <input
+              id="project-name"
+              type="text"
+              placeholder="Project name"
+              required
+            />
 
-        <input
-          id="todo-description"
-          type="text"
-          placeholder="Description"
-          required
-        />
+            <button type="submit">Add Project</button>
+          </form>
+        </section>
 
-        <input
-          id="todo-due-date"
-          type="date"
-          required
-        />
+        <section class="panel">
+          <h2>Create Todo</h2>
 
-        <select id="todo-priority">
-          <option value="low">Low</option>
-          <option value="medium">Medium</option>
-          <option value="high">High</option>
-        </select>
+          <form id="todo-form">
+            <input
+              id="todo-title"
+              type="text"
+              placeholder="Title"
+              required
+            />
 
-        <select id="todo-project"></select>
-        
-        <button type="submit">Add Todo</button>
-      </form>
-      <form id="project-form">
-        <input
-            id="project-name"
-            type="text"
-            placeholder="Project name"
-            required
-        />
+            <input
+              id="todo-description"
+              type="text"
+              placeholder="Description"
+              required
+            />
 
-        <button type="submit">Add Project</button>
-      </form>
+            <input
+              id="todo-due-date"
+              type="date"
+              required
+            />
+
+            <select id="todo-priority">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+
+            <select id="todo-project"></select>
+
+            <button type="submit">Add Todo</button>
+          </form>
+        </section>
+      </aside>
+
+      <section class="content">
+        <h2>Projects</h2>
+
+        <div id="projects"></div>
+      </section>
     </main>
   </body>
 </html>

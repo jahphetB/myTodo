@@ -5,38 +5,99 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  color: #222;
 }
 
-header {
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Header */
+
+.app-header {
+  padding: 24px 32px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.app-header h1 {
+  margin: 0;
+}
+
+.app-header p {
+  margin: 6px 0 0;
+  color: #666;
+}
+
+/* Main layout */
+
+.app-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+  padding: 24px;
+}
+
+/* Sidebar */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.panel {
+  background: white;
   padding: 20px;
-  border-bottom: 1px solid #ccc;
+  border-radius: 10px;
+  border: 1px solid #ddd;
 }
 
-.creation_buttons {
-  margin-bottom: 10px;
+.panel h2 {
+  margin-top: 0;
 }
 
-main {
-  padding: 20px;
-}
-
-#projects {
-  margin-bottom: 30px;
-}
-
-#todo-form {
+form {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-width: 400px;
 }
 
 input,
-select,
-button {
-  padding: 8px;
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
 
-#projects p {
-  cursor: pointer;
+button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #222;
+  color: white;
+}
+
+/* Main content */
+
+.content {
+  min-width: 0;
+}
+
+.content > h2 {
+  margin-top: 0;
+}
+
+#projects {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
