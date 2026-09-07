@@ -41,4 +41,22 @@ function saveProjects() {
   localStorage.setItem("projects", JSON.stringify(projects));
 }
 
-export { projects, addProject, saveProjects };
+function renameProject(project, newName) {
+  project.name = newName;
+}
+
+function deleteProject(project) {
+  const projectIndex = projects.indexOf(project);
+
+  if (projectIndex !== -1) {
+    projects.splice(projectIndex, 1);
+  }
+}
+
+export {
+  projects,
+  addProject,
+  saveProjects,
+  renameProject,
+  deleteProject,
+};

@@ -1,4 +1,9 @@
-import { projects, saveProjects } from "./app.js";
+import {
+  projects,
+  saveProjects,
+  renameProject,
+  deleteProject,
+} from "./app.js";
 
 function renderProjects() {
 
@@ -13,7 +18,50 @@ function renderProjects() {
     const projectTitle = document.createElement("h2");
     projectTitle.textContent = project.name;
 
+    const editProjectButton = document.createElement("button");
+    editProjectButton.textContent = "Edit Project";
+
+    const deleteProjectButton = document.createElement("button");
+    deleteProjectButton.textContent = "Delete Project";
+
+    editProjectButton.addEventListener("click", () => {
+      const editForm = document.createElement("form");
+
+      const nameInput = document.createElement("input");
+      nameInput.value = project.name;
+      nameInput.required = true;
+
+      const saveButton = document.createElement("button");
+      saveButton.type = "submit";
+      saveButton.textContent = "Save";
+
+      editForm.appendChild(nameInput);
+      editForm.appendChild(saveButton);
+
+      projectElement.appendChild(editForm);
+
+      editForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        renameProject(project, nameInput.value);
+
+        saveProjects();
+        renderProjects();
+        renderProjectOptions();
+      });
+    });
+
+    deleteProjectButton.addEventListener("click", () => {
+      deleteProject(project);
+
+      saveProjects();
+      renderProjects();
+      renderProjectOptions();
+    });
+
     projectElement.appendChild(projectTitle);
+    projectElement.appendChild(editProjectButton);
+    projectElement.appendChild(deleteProjectButton);
 
     project.todos.forEach((todo) => {
       const todoElement = document.createElement("div");
@@ -90,10 +138,13 @@ function renderProjects() {
         editForm.addEventListener("submit", (event) => {
           event.preventDefault();
 
-          todo.title = titleInput.value;
-          todo.description = descriptionInput.value;
-          todo.dueDate = dueDateInput.value;
-          todo.priority = prioritySelect.value;
+          project.updateTodo(
+            todo,
+            titleInput.value,
+            descriptionInput.value,
+            dueDateInput.value,
+            prioritySelect.value
+          );
 
           saveProjects();
           renderProjects();
@@ -101,9 +152,8 @@ function renderProjects() {
       });
 
       deleteButton.addEventListener("click", () => {
-        const todoIndex = project.todos.indexOf(todo);
+        project.deleteTodo(todo);
 
-        project.todos.splice(todoIndex, 1);
         saveProjects();
         renderProjects();
       });
