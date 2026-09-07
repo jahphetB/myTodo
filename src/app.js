@@ -1,9 +1,34 @@
 import Project from "./project.js";
+import Todo from "./todo.js";
 
-const projects = [];
+function loadProjects() {
+  const savedProjects = localStorage.getItem("projects");
 
-const defaultProject = new Project("Default");
-projects.push(defaultProject);
+  if (!savedProjects) {
+    return [new Project("Default")];
+  }
+
+  const parsedProjects = JSON.parse(savedProjects);
+
+  return parsedProjects.map((projectData) => {
+    const project = new Project(projectData.name);
+
+    projectData.todos.forEach((todoData) => {
+      const todo = new Todo(
+        todoData.title,
+        todoData.description,
+        todoData.dueDate,
+        todoData.priority
+      );
+
+      project.addTodo(todo);
+    });
+
+    return project;
+  });
+}
+
+const projects = loadProjects();
 
 function addProject(name) {
   const newProject = new Project(name);
@@ -12,4 +37,8 @@ function addProject(name) {
   return newProject;
 }
 
-export { projects, defaultProject, addProject };
+function saveProjects() {
+  localStorage.setItem("projects", JSON.stringify(projects));
+}
+
+export { projects, addProject, saveProjects };

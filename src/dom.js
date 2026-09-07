@@ -1,4 +1,4 @@
-import { projects } from "./app.js";
+import { projects, saveProjects } from "./app.js";
 
 function renderProjects() {
 
@@ -95,6 +95,7 @@ function renderProjects() {
           todo.dueDate = dueDateInput.value;
           todo.priority = prioritySelect.value;
 
+          saveProjects();
           renderProjects();
         });
       });
@@ -103,7 +104,7 @@ function renderProjects() {
         const todoIndex = project.todos.indexOf(todo);
 
         project.todos.splice(todoIndex, 1);
-
+        saveProjects();
         renderProjects();
       });
 

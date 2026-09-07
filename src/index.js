@@ -1,7 +1,11 @@
 import "./styles.css";
 
 import Todo from "./todo.js";
-import { projects, addProject } from "./app.js";
+import {
+  projects,
+  addProject,
+  saveProjects,
+} from "./app.js";
 import { renderProjects, renderProjectOptions } from "./dom.js";
 
 const todoForm = document.querySelector("#todo-form");
@@ -13,6 +17,7 @@ todoForm.addEventListener("submit", (event) => {
   const description = document.querySelector("#todo-description").value;
   const dueDate = document.querySelector("#todo-due-date").value;
   const priority = document.querySelector("#todo-priority").value;
+  const projectIndex = document.querySelector("#todo-project").value;
 
   const newTodo = new Todo(
     title,
@@ -21,10 +26,9 @@ todoForm.addEventListener("submit", (event) => {
     priority
   );
 
-  const projectIndex = document.querySelector("#todo-project").value;
-
   projects[projectIndex].addTodo(newTodo);
 
+  saveProjects();
   renderProjects();
 
   todoForm.reset();
@@ -38,6 +42,8 @@ projectForm.addEventListener("submit", (event) => {
   const projectName = document.querySelector("#project-name").value;
 
   addProject(projectName);
+  
+  saveProjects();
 
   renderProjects();
   renderProjectOptions();
