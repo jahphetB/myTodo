@@ -28,7 +28,7 @@ button {
 }
 
 .app-header h1 {
-  margin: 0;
+  margin: 20px;
 }
 
 .app-header p {
@@ -98,6 +98,73 @@ button {
 
 #projects {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 20px;
+}
+
+/* v2 */
+
+/* Projects */
+
+.project {
+  background: white;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.project-title {
+  margin: 0 0 10px;
+}
+
+/* Todos */
+
+.todo {
+  padding: 14px 0;
+  border-top: 1px solid #eee;
+}
+
+.todo-summary {
+  margin: 0 0 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.todo-details {
+  color: #555;
+}
+
+/* Action areas */
+
+.project-actions,
+.todo-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.project-actions {
+  margin-bottom: 12px;
+}
+
+.todo-actions {
+  margin-top: 8px;
+}
+
+/* Secondary action buttons */
+
+.action-button {
+  width: auto;
+  padding: 5px 9px;
+  font-size: 0.8rem;
+  font-weight: normal;
+  background: transparent;
+  color: #666;
+  border: 1px solid #ccc;
+}
+
+.action-button:hover {
+  background: #f4f4f4;
+  color: #222;
 }
