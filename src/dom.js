@@ -14,15 +14,25 @@ function renderProjects() {
 
   projects.forEach((project) => {
     const projectElement = document.createElement("div");
+    projectElement.classList.add("project");
 
     const projectTitle = document.createElement("h2");
+    projectTitle.classList.add("project-title");
     projectTitle.textContent = project.name;
 
     const editProjectButton = document.createElement("button");
+    editProjectButton.classList.add("action-button", "edit-project-button");
     editProjectButton.textContent = "Edit Project";
 
     const deleteProjectButton = document.createElement("button");
+    deleteProjectButton.classList.add("action-button", "delete-project-button");
     deleteProjectButton.textContent = "Delete Project";
+
+    const projectActions = document.createElement("div");
+    projectActions.classList.add("project-actions");
+
+    projectActions.appendChild(editProjectButton);
+    projectActions.appendChild(deleteProjectButton);
 
     editProjectButton.addEventListener("click", () => {
       if (projectElement.querySelector(".project-edit-form")) {
@@ -65,16 +75,18 @@ function renderProjects() {
     });
 
     projectElement.appendChild(projectTitle);
-    projectElement.appendChild(editProjectButton);
-    projectElement.appendChild(deleteProjectButton);
+    projectElement.appendChild(projectActions);
 
     project.todos.forEach((todo) => {
       const todoElement = document.createElement("div");
+      todoElement.classList.add("todo");
 
       const todoSummary = document.createElement("p");
+      todoSummary.classList.add("todo-summary");
       todoSummary.textContent = `${todo.title} - ${todo.dueDate}`;
 
       const todoDetails = document.createElement("div");
+      todoDetails.classList.add("todo-details");
 
       const description = document.createElement("p");
       description.textContent = todo.description;
@@ -96,10 +108,18 @@ function renderProjects() {
       });
 
       const deleteButton = document.createElement("button");
+      deleteButton.classList.add("action-button", "delete-todo-button");
       deleteButton.textContent = "Delete";
 
       const editButton = document.createElement("button");
+      editButton.classList.add("action-button", "edit-todo-button");
       editButton.textContent = "Edit";
+
+      const todoActions = document.createElement("div");
+      todoActions.classList.add("todo-actions");
+
+      todoActions.appendChild(editButton);
+      todoActions.appendChild(deleteButton);
 
       editButton.addEventListener("click", () => {
         if (todoElement.querySelector(".todo-edit-form")) {
@@ -170,8 +190,7 @@ function renderProjects() {
 
       todoElement.appendChild(todoSummary);
       todoElement.appendChild(todoDetails);
-      todoElement.appendChild(editButton);
-      todoElement.appendChild(deleteButton);
+      todoElement.appendChild(todoActions);
 
       projectElement.appendChild(todoElement);
     });
